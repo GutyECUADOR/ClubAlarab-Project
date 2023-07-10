@@ -46,20 +46,31 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
+        $custom_messages = [
+            'nickname_promoter.exists' => 'El nick del promotor no existe, indique un nick correcto.'
+        ];
+        
         $request->validate([
-            'name' => ['required', 'string', 'max:191'],
+            'nickname' => ['required', 'string', 'max:191', 'unique:users'],
+            'nickname_promoter' => ['exists:users,nickname', 'string', 'max:191'],
             'email' => ['required', 'string', 'email', 'max:191', 'unique:users'],
+            'phone' => ['required', 'string', 'max:15'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        ]);
+        ], $custom_messages);
 
         $user = User::create([
-            'name' => $request->name,
+            'nickname' => $request->nickname,
+            'nickname_promoter' => $request->nickname_promoter,
             'email' => $request->email,
+            'phone' => $request->phone,
             'password' => Hash::make($request->password),
         ]);
 
         event(new Registered($user));
-        return redirect('/register')->with('status', 'Usuario '.$request->email.' registrado con éxito!');
+
+        Auth::login($user);
+
+        return redirect(RouteServiceProvider::HOME);
     }
 
     /**

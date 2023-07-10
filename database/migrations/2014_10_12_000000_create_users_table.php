@@ -15,8 +15,8 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->integer('location');
-            $table->string('nickname');
+            $table->integer('location')->nullable();
+            $table->string('nickname')->unique();
             $table->string('nickname_promoter');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
@@ -25,8 +25,8 @@ class CreateUsersTable extends Migration
             $table->string('role')->default('USER_ROLE');
             $table->string('phone');
             $table->string('avatar')->default('default.png');
-            $table->string('wallet_usdt_tr20');
-            $table->string('wallet_alarab');
+            $table->string('wallet_usdt_tr20')->nullable();;
+            $table->string('wallet_alarab')->nullable();;
             $table->unsignedBigInteger('package_id')->default(1);
             $table->foreign('package_id')->references('id')->on('packages');
             $table->timestamps();

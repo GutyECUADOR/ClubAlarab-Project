@@ -18,7 +18,7 @@
 
             <div class="form-floating">
             <input type="email" name="email" value="{{old('email')}}" class="form-control" id="email" placeholder="name@example.com" required autofocus>
-            <label for="email">Usuario</label>
+            <label for="email">Correo electrónico</label>
             </div>
             <div class="form-floating">
             <input type="password" name="password" class="form-control" id="password" placeholder="Password" required autocomplete="current-password">
