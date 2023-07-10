@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -20,7 +21,7 @@ class User extends Authenticatable
     protected $fillable = [
         'nickname',
         'is_payed',
-        'package',
+        'package_id',
         'nickname_promoter',
         'email',
         'phone',
@@ -34,6 +35,30 @@ class User extends Authenticatable
 
         return 'Sin pagar';
     }
+
+    public function getCantidadInvitadosPagadosAttribute () {
+        $data = DB::table('users')->where([
+                'nickname_promoter' => $this->nickname,
+                'is_payed' => 1
+        ])->get();
+        
+        return $data;
+    }
+
+
+    public function getCantidadInvesionPagadaAttribute () {
+        $data = DB::table('users')
+        ->select('usdt')
+        ->join('packages', 'packages.id', '=', 'users.package_id')
+            ->where([
+                'nickname_promoter' => $this->nickname,
+                'is_payed' => 1
+            ])->sum('usdt');
+        
+        return $data;
+    }
+
+    
 
     /**
      * The attributes that should be hidden for serialization.

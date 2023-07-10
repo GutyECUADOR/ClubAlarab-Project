@@ -17,12 +17,12 @@
 
             <!-- Plan -->
             <div class="form-floating mb-3">
-                <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                <select name="package" class="form-select" id="package">
                     @foreach($packages as $package)
                         <option value="{{ $package->id }}">{{ $package->name }} </option>
                     @endforeach
                   </select>
-                  <label for="floatingSelect">Seleccione un paquete</label>
+                  <label for="package">Seleccione un paquete</label>
               
             </div>
 
