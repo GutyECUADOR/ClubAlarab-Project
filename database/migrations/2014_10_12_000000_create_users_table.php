@@ -29,6 +29,7 @@ class CreateUsersTable extends Migration
             $table->string('wallet_alarab')->nullable();;
             $table->unsignedBigInteger('package_id')->default(1);
             $table->foreign('package_id')->references('id')->on('packages');
+            $table->boolean('isPayed')->default(false);
             $table->timestamps();
         });
     }

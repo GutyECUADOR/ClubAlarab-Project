@@ -15,6 +15,17 @@
                 <label for="nickname">Nickname</label>
             </div>
 
+            <!-- Plan -->
+            <div class="form-floating mb-3">
+                <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                    @foreach($packages as $package)
+                        <option value="{{ $package->id }}">{{ $package->name }} </option>
+                    @endforeach
+                  </select>
+                  <label for="floatingSelect">Seleccione un paquete</label>
+              
+            </div>
+
             <!-- NickName -->
             <div class="form-floating mb-3">
                 <input type="nickname_promoter" name="nickname_promoter" value="{{old('nickname_promoter')}}" class="form-control" id="nickname_promoter" required>

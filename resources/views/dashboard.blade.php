@@ -7,63 +7,64 @@
 
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h1 class="h2">Ultimas Inversiones</h1>
-            {{-- <div class="btn-toolbar mb-2 mb-md-0">
-              <div class="btn-group me-2">
-                <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-                <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
-              </div>
-              <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
-                <span data-feather="calendar"></span>
-                This week
+            <h3 class="h3">Datos Personales</h3>
+            <div class="btn-toolbar mb-2 mb-md-0">
+              <button type="button" class="btn btn-sm btn-primary">
+                <span data-feather="upload"></span>
+                Cargar Comprobante
               </button>
-            </div> --}}
+            </div>
           </div>
 
-          <div class="table-responsive">
-            <table class="table table-striped table-sm">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Usuario</th>
-                  <th scope="col">Tasa</th>
-                  <th scope="col">Dias</th>
-                  <th scope="col">Monto</th>
-                  <th scope="col">A Recibir</th>
-                  <th scope="col">Fecha Inversion</th>
-                  <th scope="col">Fecha Pago</th>
-                  <th scope="col">Estado</th>
-                  <th scope="col">Recibo</th>
-                  <th scope="col">Acciones</th>
-                </tr>
-              </thead>
-              <tbody>
-                @foreach ($inversiones as $inversion)
-                  <tr>
-                    <td>{{ $inversion->id }}</td>
-                   
-                    <td>{{ $inversion->user->name }}</td>
-                    <td>{{ $inversion->tasa }}</td>
-                    <td>{{ $inversion->dias_inversion }}</td>
-                    <td>{{ $inversion->monto }}</td>
-                    <td>{{ $inversion->monto_recibir }}</td>
-                    <td>{{ $inversion->fecha_inversion }}</td>
-                    <td>{{ $inversion->fecha_pago }}</td>
-                    <td>{{ $inversion->estado }}</td>
-                    <td><a class="btn btn-success btn-sm" href="{{ asset('/storage/recibos/'.$inversion->imagen_recibo) }}" download target="_blank">
-                      <span data-feather="download"></span> Descargar</a>
-                    </td>
-                    <td>
-                      <a href="{{ route('inversions.edit', $inversion)}}" class="btn btn-sm btn-primary">
-                        <span data-feather="edit"></span>
-                        Editar
-                    </a>
-                    </td>
-                  </tr>
-                @endforeach
-              </tbody>
-            </table>
+          <div class="container text-center">
+            <div class="row mb-3">
+              <div class="col">
+                <div class="card">
+                  <div class="card-header">
+                    Plan: 
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title">NickName:</h5>
+                    <p class="card-text">Esta Activo.</p>
+                    <p class="card-text">Cantidad Invitados.</p>
+                    <p class="card-text">Suma de inversión pagos del nickname.</p>
+                    <p class="card-text">Comisión 20% ganada.</p>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <div class="card">
+                  <div class="card-header">
+                    Equipo 1
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title">Special title treatment</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    
+                  </div>
+                </div>
+              </div>
+
+              <div class="col">
+                <div class="card">
+                  <div class="card-header">
+                    Equipo 2
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title">Special title treatment</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
+
+          
         </main>
       </div>
     </div>
