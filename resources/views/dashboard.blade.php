@@ -24,8 +24,8 @@
                     Plan: 
                   </div>
                   <div class="card-body">
-                    <h5 class="card-title">NickName:</h5>
-                    <p class="card-text">Esta Activo.</p>
+                    <h5 class="card-title">NickName: {{ Str::title(Auth::user()->nickname) }}</h5>
+                    <p class="card-text">Esta Activo: {{ Auth::user()->EstadoPago }}</p>
                     <p class="card-text">Cantidad Invitados.</p>
                     <p class="card-text">Suma de inversión pagos del nickname.</p>
                     <p class="card-text">Comisión 20% ganada.</p>

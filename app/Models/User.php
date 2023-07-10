@@ -19,12 +19,21 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'nickname',
+        'is_payed',
         'package',
         'nickname_promoter',
         'email',
         'phone',
-        'password',
+        'password'
     ];
+
+    public function getEstadoPagoAttribute() {
+        if ($this->is_payed == 1) {
+            return 'Pagado'; 
+        }
+
+        return 'Sin pagar';
+    }
 
     /**
      * The attributes that should be hidden for serialization.
