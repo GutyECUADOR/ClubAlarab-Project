@@ -15,14 +15,20 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->integer('location');
+            $table->string('nickname');
+            $table->string('nickname_promoter');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->string('role')->default('USER_ROLE');
-            $table->integer('ranking')->default(1);
+            $table->string('phone');
             $table->string('avatar')->default('default.png');
+            $table->string('wallet_usdt_tr20');
+            $table->string('wallet_alarab');
+            $table->unsignedBigInteger('package_id')->default(1);
+            $table->foreign('package_id')->references('id')->on('packages');
             $table->timestamps();
         });
     }

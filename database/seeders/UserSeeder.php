@@ -17,10 +17,15 @@ class UserSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert(array([
-            'name' => 'administrador',
+            'location' => 1,
+            'nickname' => 'administrador',
+            'nickname_promoter' => 'administrador',
             'email' => 'admin@admin.com',
-            'role' => 'ADMIN_ROLE',
             'password' => Hash::make('admin123'),
+            'role' => 'ADMIN_ROLE',
+            'phone' => '+593',
+            'wallet_usdt_tr20' => '',
+            'wallet_alarab' => '',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],
