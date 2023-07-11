@@ -40,6 +40,8 @@ Route::middleware('guest')->group(function () {
     Route::get('register/{user}', [RegisteredUserController::class, 'edit'])->name('register.edit');
     Route::put('register/{user}', [RegisteredUserController::class, 'update'])->name('register.update');
 
+    Route::post('asignar/{user}', [RegisteredUserController::class, 'asignar'])->name('register.asignar');
+
     Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
                 ->name('password.request');
 

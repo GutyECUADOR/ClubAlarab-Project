@@ -53,9 +53,11 @@
                     </a>
                     </td>
                     <td>
-                      <a href="{{ route('register.asignar', $user)}}" class="btn btn-sm btn-success">
-                        <span data-feather="check-square"></span> Pagar/Asignar 
-                    </a>
+                      <form method="POST" action="{{ route('register.asignar', $user) }}">
+                        @csrf
+                        <button class="btn btn-sm btn-success"> <span data-feather="check-square"></span>Pagar/Asignar </button>
+                      </form>
+                      
                     </td>
                   </tr>
                 @endforeach

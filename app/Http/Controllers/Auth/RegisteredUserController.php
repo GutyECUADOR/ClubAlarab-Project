@@ -100,4 +100,9 @@ class RegisteredUserController extends Controller
         $user->save();
         return redirect()->route('register')->with('status', 'El usuario '.$request->name.' actualizado con éxito!');
     }
+
+
+    public function asignar(Request $request, User $user) {
+        dd($user->email);
+    }
 }
