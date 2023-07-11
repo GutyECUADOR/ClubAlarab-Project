@@ -30,6 +30,7 @@ class CreateUsersTable extends Migration
             $table->unsignedBigInteger('package_id')->default(1);
             $table->foreign('package_id')->references('id')->on('packages');
             $table->boolean('is_payed')->default(false);
+            $table->string('imagen_recibo')->nullable();
             $table->timestamps();
         });
     }

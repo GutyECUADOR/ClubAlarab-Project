@@ -8,29 +8,60 @@
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
             <h3 class="h3">Datos Personales</h3>
-            <div class="btn-toolbar mb-2 mb-md-0">
-              <button type="button" class="btn btn-sm btn-primary">
-                <span data-feather="upload"></span>
-                Cargar Comprobante
-              </button>
-            </div>
+           
           </div>
 
           <div class="container text-center">
             <div class="row mb-3">
-              <div class="col">
+              <div class="col-md-8">
                 <div class="card">
-                  <div class="card-header">
-                    Plan: 
+                  <div class="card-header fw-bold">
+                    Datos de la cuenta 
                   </div>
                   <div class="card-body">
                     <h5 class="card-title">NickName: {{ Str::title(Auth::user()->nickname) }}</h5>
                     <p class="card-text">Esta Activo: {{ Auth::user()->EstadoPago }}</p>
                     <p class="card-text">Cantidad Invitados: {{ Auth::user()->CantidadInvitadosPagados->count() }}</p>
                     <p class="card-text">Inversión total de Invitados: $ {{ Auth::user()->CantidadInvesionPagada }}</p>
-                    <p class="card-text">Comisión 20% ganada.</p>
+                    <p class="card-text">Comisión 20% ganada: $ {{ Auth::user()->ComisionGanada }}</p>
                     
                   </div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="card">
+                  <div class="card-header fw-bold">
+                    Comisión Ganada
+                  </div>
+                  <div class="card-body">
+                    <p class="card-text h3 text-success">$ {{ Auth::user()->ComisionGanada }} USDT</p>
+                    
+                  </div>
+                </div>
+
+                <div class="card">
+                  <div class="card-header fw-bold">
+                    Comprobante
+                  </div>
+                  <div class="card-body">
+                     
+                      @if(auth()->user()->imagen_recibo)
+                        <a class="btn btn-success btn-sm" href="{{ asset('/storage/recibos/'.auth()->user()->imagen_recibo) }}" download target="_blank">
+                        <span data-feather="download"></span> Descargar</a>   
+                      @else 
+                        <span>Sin Comprobante, carge el comprobante aqui</span>
+                      @endif
+                  </div>
+                   @if(!auth()->user()->imagen_recibo)
+                    <div class="card-footer">
+                      <form method="POST" enctype="multipart/form-data" action="{{ route('uploadFile') }}">
+                        @csrf
+                        <input class="form-control form-control-sm" id="imagen_recibo" name="imagen_recibo" type="file" accept="image/*">
+                        <button class="btn-block btn btn-sm btn-primary w-100" type="submit">Subir comprobante</button>
+                      </form>
+                    </div>
+                   @endif
                 </div>
               </div>
             </div>
@@ -38,7 +69,7 @@
             <div class="row">
               <div class="col">
                 <div class="card">
-                  <div class="card-header">
+                  <div class="card-header fw-bold">
                     Equipo 1
                   </div>
                   <div class="card-body">
@@ -51,7 +82,7 @@
 
               <div class="col">
                 <div class="card">
-                  <div class="card-header">
+                  <div class="card-header fw-bold">
                     Equipo 2
                   </div>
                   <div class="card-body">

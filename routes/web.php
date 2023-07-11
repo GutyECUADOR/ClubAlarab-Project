@@ -3,6 +3,7 @@
 use App\Http\Controllers\DiasInversionController;
 use App\Http\Controllers\InversionController;
 use App\Http\Controllers\TipoInversionController;
+use App\Http\Controllers\FileController;
 use App\Mail\SoporteUsuarioMaileable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -40,6 +41,7 @@ Route::put('/inversions/{inversion}', [InversionController::class, 'update'])->m
 Route::middleware('auth')->group(function () {
     Route::resource('tipos-inversion', TipoInversionController::class);
     Route::resource('dias-inversion', DiasInversionController::class);
+    Route::post('/uploadfile',[FileController::class, 'store'])->name('uploadFile');;
 });
 
 require __DIR__.'/auth.php';

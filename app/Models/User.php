@@ -25,7 +25,8 @@ class User extends Authenticatable
         'nickname_promoter',
         'email',
         'phone',
-        'password'
+        'password',
+        'imagen_recibo'
     ];
 
     public function getEstadoPagoAttribute() {
@@ -57,6 +58,12 @@ class User extends Authenticatable
         
         return $data;
     }
+
+    public function getComisionGanadaAttribute () {
+        $data = $this->getCantidadInvesionPagadaAttribute();
+        return $data*0.20;
+    }
+
 
     
 
