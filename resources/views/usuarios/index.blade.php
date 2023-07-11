@@ -7,7 +7,7 @@
 
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h1 class="h2">Ultimas Inversiones</h1>
+            <h1 class="h2">Lista de Clientes</h1>
           </div>
 
           <div class="table-responsive">
@@ -28,23 +28,16 @@
                 </tr>
               </thead>
               <tbody>
-                @foreach ($inversiones as $inversion)
+                @foreach ($users as $user)
                   <tr>
-                    <td>{{ $inversion->id }}</td>
-                   
-                    <td>{{ $inversion->user->name }}</td>
-                    <td>{{ $inversion->tasa }}</td>
-                    <td>{{ $inversion->dias_inversion }}</td>
-                    <td>{{ $inversion->monto }}</td>
-                    <td>{{ $inversion->monto_recibir }}</td>
-                    <td>{{ $inversion->fecha_inversion }}</td>
-                    <td>{{ $inversion->fecha_pago }}</td>
-                    <td>{{ $inversion->estado }}</td>
-                    <td><a class="btn btn-success btn-sm" href="{{ asset('/storage/recibos/'.$inversion->imagen_recibo) }}" download target="_blank">
+                    <td>{{ $user->id }}</td>
+                    <td>{{ $user->nickname }}</td>
+                  
+                    <td><a class="btn btn-success btn-sm" href="{{ asset('/storage/recibos/'.$user->imagen_recibo) }}" download target="_blank">
                       <span data-feather="download"></span> Descargar</a>
                     </td>
                     <td>
-                      <a href="{{ route('inversions.edit', $inversion)}}" class="btn btn-sm btn-primary">
+                      <a href="{{ route('register.edit', $user)}}" class="btn btn-sm btn-primary">
                         <span data-feather="edit"></span>
                         Editar
                     </a>

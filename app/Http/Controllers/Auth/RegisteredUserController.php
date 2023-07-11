@@ -15,6 +15,12 @@ use Illuminate\Validation\Rules;
 
 class RegisteredUserController extends Controller
 {
+    public function index()
+    {
+        $users = User::all();
+        return view('usuarios.index', compact('users'));
+    }
+
     /**
      * Display the registration view.
      *

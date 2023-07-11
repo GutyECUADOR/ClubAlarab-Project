@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\DiasInversionController;
 use App\Http\Controllers\InversionController;
 use App\Http\Controllers\TipoInversionController;
@@ -41,6 +42,7 @@ Route::put('/inversions/{inversion}', [InversionController::class, 'update'])->m
 Route::middleware('auth')->group(function () {
     Route::resource('tipos-inversion', TipoInversionController::class);
     Route::resource('dias-inversion', DiasInversionController::class);
+    Route::get('/lista_usuarios', [RegisteredUserController::class, 'index'])->name('lista_usuarios');
     Route::post('/uploadfile',[FileController::class, 'store'])->name('uploadFile');;
 });
 

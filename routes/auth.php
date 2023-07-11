@@ -35,21 +35,16 @@ Route::middleware('guest')->group(function () {
                 ->name('password.update');
 });
 
-Route::middleware('auth')->group(function () {
-
+    Route::middleware('auth')->group(function () {
     
-
     Route::get('register/{user}', [RegisteredUserController::class, 'edit'])->name('register.edit');
     Route::put('register/{user}', [RegisteredUserController::class, 'update'])->name('register.update');
 
-    
-
-
-    /* Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
+    Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
                 ->name('password.request');
 
     Route::post('forgot-password', [PasswordResetLinkController::class, 'store'])
-                ->name('password.email'); */
+                ->name('password.email');
 
     Route::get('verify-email', [EmailVerificationPromptController::class, '__invoke'])
                 ->name('verification.notice');

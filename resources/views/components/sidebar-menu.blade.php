@@ -7,24 +7,18 @@
             Dashboard
             </a>
         </li>
+
+        @if(auth()->user()->role == 'ADMIN_ROLE')
+
         <li class="nav-item">
-            <a class="nav-link" href="{{route('tipos-inversion.index')}}">
+            <a class="nav-link" href="{{route('lista_usuarios')}}">
             <span data-feather="bar-chart-2"></span>
-            Tipos de Inversion
+            Lista de usuarios
             </a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{route('dias-inversion.index')}}">
-            <span data-feather="layers"></span>
-            Dias de inversion
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{route('register')}}">
-            <span data-feather="users"></span>
-                Clientes
-            </a>
-        </li>
+       
+        @endif
+
         </ul>
 
     </div>
