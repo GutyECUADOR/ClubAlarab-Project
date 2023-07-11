@@ -11,18 +11,17 @@
           </div>
 
           <div class="table-responsive">
-            <table class="table table-striped table-sm">
+            <table class="table table-striped table-sm table-hover">
               <thead>
                 <tr>
                   <th scope="col">#</th>
-                  <th scope="col">Usuario</th>
-                  <th scope="col">Tasa</th>
-                  <th scope="col">Dias</th>
-                  <th scope="col">Monto</th>
-                  <th scope="col">A Recibir</th>
-                  <th scope="col">Fecha Inversion</th>
-                  <th scope="col">Fecha Pago</th>
-                  <th scope="col">Estado</th>
+                  <th scope="col">Nickname</th>
+                  <th scope="col">Ubicación</th>
+                  <th scope="col">Promotor</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Telefono</th>
+                  <th scope="col">Paquete</th>
+                  <th scope="col">Pagado</th>
                   <th scope="col">Recibo</th>
                   <th scope="col">Acciones</th>
                 </tr>
@@ -32,14 +31,30 @@
                   <tr>
                     <td>{{ $user->id }}</td>
                     <td>{{ $user->nickname }}</td>
+                    <td>{{ $user->location }}</td>
+                    <td>{{ $user->nickname_promoter }}</td>
+                    <td>{{ $user->email }}</td>
+                    <td>{{ $user->phone }}</td>
+                    <td>{{ $user->package_id }}</td>
+                    <td>{{ $user->EstadoPago }}</td>
                   
-                    <td><a class="btn btn-success btn-sm" href="{{ asset('/storage/recibos/'.$user->imagen_recibo) }}" download target="_blank">
-                      <span data-feather="download"></span> Descargar</a>
+                    @if($user->imagen_recibo)
+                    <td><a href="{{ asset('/storage/recibos/'.$user->imagen_recibo) }}" download target="_blank">
+                      <span></span> Descargar</a>
                     </td>
+                    @else
+                    <td>
+                      <span ></span> Sin pago</a>
+                    </td>
+                    @endif
                     <td>
                       <a href="{{ route('register.edit', $user)}}" class="btn btn-sm btn-primary">
-                        <span data-feather="edit"></span>
-                        Editar
+                        <span data-feather="edit"></span> Editar
+                    </a>
+                    </td>
+                    <td>
+                      <a href="{{ route('register.asignar', $user)}}" class="btn btn-sm btn-success">
+                        <span data-feather="check-square"></span> Pagar/Asignar 
                     </a>
                     </td>
                   </tr>
