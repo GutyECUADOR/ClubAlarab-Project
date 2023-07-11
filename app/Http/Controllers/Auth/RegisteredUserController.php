@@ -103,6 +103,14 @@ class RegisteredUserController extends Controller
 
 
     public function asignar(Request $request, User $user) {
-        dd($user->email);
+        $cabezaArbol = DB::table('users')
+            ->select('location')
+            ->where([
+                'nickname' => $user->nickname,
+                ])
+            ->first()->location;
+
+        dd($cabezaArbol);
+
     }
 }

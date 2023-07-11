@@ -2,10 +2,14 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Str;
+use Faker\Generator as Faker;
+
 
 class UserSeeder extends Seeder
 {
@@ -19,7 +23,7 @@ class UserSeeder extends Seeder
         DB::table('users')->insert(array([
             'location' => 1,
             'nickname' => 'administrador',
-            'nickname_promoter' => 'administrador',
+            'nickname_promoter' => '',
             'email' => 'admin@admin.com',
             'password' => Hash::make('admin123'),
             'role' => 'ADMIN_ROLE',
@@ -31,5 +35,22 @@ class UserSeeder extends Seeder
             ],
         ));
 
+        foreach (range(1,31) as $index) {
+            User::create([
+                'location' => $index+1,
+                'nickname' => 'partner'.$index,
+                'is_payed' => true,
+                'package_id' => 1,
+                'nickname_promoter' => 'administrador',
+                'email' => 'partner'.$index.'@clubalarab.com',
+                'phone' => '+593',
+                'password' => Hash::make('admin2023'),
+                'imagen_recibo' => null
+            ]);
+        }
+        
+
+
+    
     }
 }
