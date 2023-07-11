@@ -11,7 +11,7 @@
         @if(auth()->user()->role == 'ADMIN_ROLE')
 
         <li class="nav-item">
-            <a class="nav-link" href="{{route('lista_usuarios')}}">
+            <a class="nav-link" href="{{route('users-list')}}">
             <span data-feather="bar-chart-2"></span>
             Lista de usuarios
             </a>
