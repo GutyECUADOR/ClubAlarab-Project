@@ -115,10 +115,9 @@ class RegisteredUserController extends Controller
             SELECT location FROM users WHERE nickname = (SELECT nickname_promoter FROM users WHERE nickname = :nickname)', 
             array('nickname' => $user->nickname));
 
+        // EL GRUPO EMPIEZA DESDE ESTE ID
         $cabezaArbol = $query[0]->location;
-
-        
-      
+       
         // 7 niveles de profundidad
         //Empieza en 2 nodos sube hasta 64 en nivel 7
 
@@ -139,9 +138,18 @@ class RegisteredUserController extends Controller
         //Consultamos si hay una ubicacion con ese rango
         $cantidad_EQ1 = DB::table('users')->select('location')->whereIn('location', $array_rango_EQ1)->count();
       
-        echo $cantidad_EQ1.'</br>';
-        
-        echo '</br>';
+        $ubicacion_libre_EQ1 = null;
+        foreach ($array_rango_EQ1 as $index) {
+            $ubicacion = DB::table('users')->select('location')->where('location', $index)->first();
+            
+            if ($ubicacion == NULL) {
+                $ubicacion_libre_EQ1 = $index;
+                break;
+
+            }
+        }
+                        
+       
 
 
         /* EQUIPO 2 */
@@ -159,9 +167,30 @@ class RegisteredUserController extends Controller
             //Consultamos si hay una ubicacion con ese rango
         }
 
+        //Consultamos si hay una ubicacion con ese rango
         $cantidad_EQ2 = DB::table('users')->select('location')->whereIn('location', $array_rango_EQ2)->count();
-          
-        echo $cantidad_EQ2.'</br>';
+    
+        $ubicacion_libre_EQ2 = null;
+        foreach ($array_rango_EQ2 as $index) {
+            $ubicacion = DB::table('users')->select('location')->where('location', $index)->first();
+            
+            if ($ubicacion == NULL) {
+                $ubicacion_libre_EQ2 = $index;
+                break;
+
+            }
+        }
+        echo 'Cantidad1:'.$cantidad_EQ1. '</br>';
+        echo 'Cantidad2:'.$cantidad_EQ2. '</br>';
+                 
+        echo 'Libre1:'.$ubicacion_libre_EQ1. '</br>';
+        echo 'Libre2:'.$ubicacion_libre_EQ2. '</br>';
+
+
+        // Comprobar cuando la matriz este llena
+        if ($cantidad_EQ1 == 63 && $cantidad_EQ2 == 63) {
+            
+        }
 
         // Trabajamos en el equipo con menor numero de ubicaciones asignadas
         if ($cantidad_EQ1 > $cantidad_EQ2) {
