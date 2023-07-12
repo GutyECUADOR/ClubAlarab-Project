@@ -73,9 +73,23 @@
                     Equipo 1
                   </div>
                   <div class="card-body">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    
+                   
+                    <table class="table table-striped table-sm table-hover">
+                      <thead>
+                        <tr>
+                          <th scope="col">Nickname</th>
+                          <th scope="col">Inversión</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        @foreach (Auth::user()->ListaEquipoA as $user)
+                        <tr>
+                          <td>{{ $user->nickname }}</td>
+                          <td>$ {{ $user->usdt }}</td>
+                        </tr>
+                        @endforeach
+                      </tbody>
+                    </table>
                   </div>
                 </div>
               </div>
@@ -86,9 +100,23 @@
                     Equipo 2
                   </div>
                   <div class="card-body">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    
+                   
+                    <table class="table table-striped table-sm table-hover">
+                      <thead>
+                        <tr>
+                          <th scope="col">Nickname</th>
+                          <th scope="col">Inversión</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        @foreach (Auth::user()->ListaEquipoB as $user)
+                        <tr>
+                          <td>{{ $user->nickname }}</td>
+                          <td>$ {{ $user->usdt }}</td>
+                        </tr>
+                        @endforeach
+                      </tbody>
+                    </table>
                   </div>
                 </div>
               </div>
