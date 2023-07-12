@@ -80,11 +80,9 @@ class User extends Authenticatable
             
         }
         
-        //Consultamos si hay una ubicacion con ese rango
         $cantidad_EQ1 = DB::table('users')->select('*')
                         ->join('packages', 'packages.id', '=', 'users.package_id')
                         ->where([
-                            'nickname_promoter' => $this->nickname,
                             'is_payed' => 1
                         ])
                         ->whereIn('location', $array_rango_EQ1)->get();
@@ -110,7 +108,6 @@ class User extends Authenticatable
         $cantidad_EQ2 = DB::table('users')->select('*')
                         ->join('packages', 'packages.id', '=', 'users.package_id')
                         ->where([
-                            'nickname_promoter' => $this->nickname,
                             'is_payed' => 1
                         ])
                         ->whereIn('location', $array_rango_EQ2)->get();
