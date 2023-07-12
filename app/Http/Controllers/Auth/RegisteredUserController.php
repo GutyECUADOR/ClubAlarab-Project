@@ -124,54 +124,47 @@ class RegisteredUserController extends Controller
 
         /* EQUIPO 1 */
         $nodos = 2; 
-        $total_equipo1 = 0;
+        $cantidad_EQ1 = 0;
+        $array_rango_EQ1 = [];
         for ($nivel=1; $nivel < 7; $nivel++) { 
             $primero = $nodos * $cabezaArbol; // Formula n*a
             $ultimo =  $cabezaArbol * $nodos + $nodos / 2 - 1; // Formula a*n+n/2-1
             $nodos = $nodos*2;
-            //echo $primero.'-'.$ultimo.'</br>';
-
-            $array_rango = range($primero,$ultimo);
-           /*  echo '</br>';
-            var_dump($array_rango); */
-
-            //Consultamos si hay una ubicacion con ese rango
-            $items = DB::table('users')->select('location')->whereIn('location', $array_rango)->count();
-            $total_equipo1+= $items;
-            
-            //var_dump($items);
+           
+            $current_rango = range($primero,$ultimo);
+            $array_rango_EQ1 = array_merge($array_rango_EQ1, $current_rango);
             
         }
-        echo $total_equipo1.'</br>';
+        
+        //Consultamos si hay una ubicacion con ese rango
+        $cantidad_EQ1 = DB::table('users')->select('location')->whereIn('location', $array_rango_EQ1)->count();
+      
+        echo $cantidad_EQ1.'</br>';
         
         echo '</br>';
 
 
         /* EQUIPO 2 */
         $nodos = 2;
-        $total_equipo2 = 0;
+        $cantidad_EQ2 = 0;
+        $array_rango_EQ2 = [];
         for ($nivel=1; $nivel < 7; $nivel++) { 
             $primero =  $cabezaArbol * $nodos + $nodos / 2 ; // a*n+n/2
             $ultimo =  $cabezaArbol * $nodos + $nodos - 1 ; // a*n+n-1
             $nodos = $nodos*2;
-            //echo $primero.'-'.$ultimo.'</br>';
-
             
-            $array_rango = range($primero,$ultimo);
-           /*  echo '</br>';
-            var_dump($array_rango); */
+            $current_rango = range($primero,$ultimo);
+            $array_rango_EQ2 = array_merge($array_rango_EQ2, $current_rango);
 
             //Consultamos si hay una ubicacion con ese rango
-            $items = DB::table('users')->select('location')->whereIn('location', $array_rango)->count();
-            $total_equipo2+= $items;
-           
-            //var_dump($items);
         }
 
-        echo $total_equipo2.'</br>';
+        $cantidad_EQ2 = DB::table('users')->select('location')->whereIn('location', $array_rango_EQ2)->count();
+          
+        echo $cantidad_EQ2.'</br>';
 
         // Trabajamos en el equipo con menor numero de ubicaciones asignadas
-        if ($total_equipo1 > $total_equipo2) {
+        if ($cantidad_EQ1 > $cantidad_EQ2) {
           
         }
 
