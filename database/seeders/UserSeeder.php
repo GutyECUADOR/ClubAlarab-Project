@@ -8,8 +8,6 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Str;
-use Faker\Generator as Faker;
-
 
 class UserSeeder extends Seeder
 {
@@ -49,8 +47,22 @@ class UserSeeder extends Seeder
             ]);
         }
         
+        
+      
+        foreach (range(1,10) as $index) {
+            User::create([
+                'nickname' => 'test'.$index,
+                'is_payed' => 0,
+                'package_id' => 1,
+                'nickname_promoter' => '',
+                'email' => 'test'.$index.'@test.com',
+                'phone' => '+593',
+                'password' => Hash::make('12345678'),
+                'imagen_recibo' => null
+            ]);
+        }
 
-
+       
     
     }
 }

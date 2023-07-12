@@ -103,14 +103,79 @@ class RegisteredUserController extends Controller
 
 
     public function asignar(Request $request, User $user) {
-        $cabezaArbol = DB::table('users')
+        /* $cabezaArbol = DB::table('users')
             ->select('location')
             ->where([
                 'nickname' => $user->nickname,
                 ])
-            ->first()->location;
+            ->first()->location; */
 
-        dd($cabezaArbol);
+        /* Obtnemos la ubicacion (id) del arbol de su patrocinador */
+        $query = DB::select('
+            SELECT location FROM users WHERE nickname = (SELECT nickname_promoter FROM users WHERE nickname = :nickname)', 
+            array('nickname' => $user->nickname));
 
+        $cabezaArbol = $query[0]->location;
+
+        
+      
+        // 7 niveles de profundidad
+        //Empieza en 2 nodos sube hasta 64 en nivel 7
+
+        /* EQUIPO 1 */
+        $nodos = 2; 
+        $total_equipo1 = 0;
+        for ($nivel=1; $nivel < 7; $nivel++) { 
+            $primero = $nodos * $cabezaArbol; // Formula n*a
+            $ultimo =  $cabezaArbol * $nodos + $nodos / 2 - 1; // Formula a*n+n/2-1
+            $nodos = $nodos*2;
+            //echo $primero.'-'.$ultimo.'</br>';
+
+            $array_rango = range($primero,$ultimo);
+           /*  echo '</br>';
+            var_dump($array_rango); */
+
+            //Consultamos si hay una ubicacion con ese rango
+            $items = DB::table('users')->select('location')->whereIn('location', $array_rango)->count();
+            $total_equipo1+= $items;
+            
+            //var_dump($items);
+            
+        }
+        echo $total_equipo1.'</br>';
+        
+        echo '</br>';
+
+
+        /* EQUIPO 2 */
+        $nodos = 2;
+        $total_equipo2 = 0;
+        for ($nivel=1; $nivel < 7; $nivel++) { 
+            $primero =  $cabezaArbol * $nodos + $nodos / 2 ; // a*n+n/2
+            $ultimo =  $cabezaArbol * $nodos + $nodos - 1 ; // a*n+n-1
+            $nodos = $nodos*2;
+            //echo $primero.'-'.$ultimo.'</br>';
+
+            
+            $array_rango = range($primero,$ultimo);
+           /*  echo '</br>';
+            var_dump($array_rango); */
+
+            //Consultamos si hay una ubicacion con ese rango
+            $items = DB::table('users')->select('location')->whereIn('location', $array_rango)->count();
+            $total_equipo2+= $items;
+           
+            //var_dump($items);
+        }
+
+        echo $total_equipo2.'</br>';
+
+        // Trabajamos en el equipo con menor numero de ubicaciones asignadas
+        if ($total_equipo1 > $total_equipo2) {
+          
+        }
+
+     
+        
     }
 }
