@@ -103,21 +103,20 @@ class RegisteredUserController extends Controller
 
 
     public function asignar(Request $request, User $user) {
-        /* $cabezaArbol = DB::table('users')
-            ->select('location')
-            ->where([
-                'nickname' => $user->nickname,
-                ])
-            ->first()->location; */
-
+     
         /* Obtnemos la ubicacion (id) del arbol de su patrocinador */
-        $query = DB::select('
+        $resulset = DB::select('
             SELECT location FROM users WHERE nickname = (SELECT nickname_promoter FROM users WHERE nickname = :nickname)', 
             array('nickname' => $user->nickname));
+            
+           
+        if (!$resulset) {
+            return redirect()->back()->withErrors(['El usuario: '.$user->nickname.' no tiene un nickname de promotor, no se puede asignar ubicación.']);
+        }
 
         // EL GRUPO EMPIEZA DESDE ESTE ID
-        $cabezaArbol = $query[0]->location;
-       
+        $cabezaArbol = $resulset[0]->location;
+
         // 7 niveles de profundidad
         //Empieza en 2 nodos sube hasta 64 en nivel 7
 
@@ -149,9 +148,6 @@ class RegisteredUserController extends Controller
             }
         }
                         
-       
-
-
         /* EQUIPO 2 */
         $nodos = 2;
         $cantidad_EQ2 = 0;
@@ -189,15 +185,24 @@ class RegisteredUserController extends Controller
 
         // Comprobar cuando la matriz este llena
         if ($cantidad_EQ1 == 63 && $cantidad_EQ2 == 63) {
-            
+            return redirect()->back()->withErrors(['Tu patrocinador alcanzo el limite de sus equipos, consulta su nuevo nickname']);
         }
 
         // Trabajamos en el equipo con menor numero de ubicaciones asignadas
-        if ($cantidad_EQ1 > $cantidad_EQ2) {
-          
+        if ($cantidad_EQ1 < $cantidad_EQ2) {
+            $user_DB = User::findOrFail($user->id);
+            $user_DB->location = $ubicacion_libre_EQ1;
+            $user_DB->save();
+            return redirect()->back()->with('status', 'Registrado en ubicación.'. $ubicacion_libre_EQ1);
+           
+        }else{
+            $user_DB = User::findOrFail($user->id);
+            $user_DB->location = $ubicacion_libre_EQ2;
+            $user_DB->save();
+            return redirect()->back()->with('status', 'Registrado en ubicación.'. $ubicacion_libre_EQ2);
+           
         }
 
-     
         
     }
 }

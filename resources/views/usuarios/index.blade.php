@@ -10,6 +10,17 @@
             <h1 class="h2">Lista de Clientes</h1>
           </div>
 
+          <!-- Validation Errors -->
+          <x-auth-validation-errors class="mb-3" :errors="$errors" />
+
+          @if (Session::has('status'))
+              <div class="alert alert-success">
+                  <ul>
+                      <li>{{ Session::get('status') }}</li>
+                  </ul>
+              </div>
+          @endif
+
           <div class="table-responsive">
             <table class="table table-striped table-sm table-hover">
               <thead>
