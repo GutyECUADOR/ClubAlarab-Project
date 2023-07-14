@@ -33,11 +33,10 @@
                 
                                 <!-- Validation Errors -->
                                 <x-auth-validation-errors class="mb-4" :errors="$errors" />
-                
-                              
+
                                 <div class="form-floating mb-3">
-                                    <input type="date" name="fechaPago" value="{{ date('Y-m-d'); }}" class="form-control" id="fechaPago" required>
-                                    <label for="fechaPago">Fecha Pago</label>
+                                    <input type="date" name="fecha_pago" value="{{ date('Y-m-d'); }}" class="form-control" id="fecha_pago" required>
+                                    <label for="fecha_pago">Fecha Pago</label>
                                 </div>
 
                                 <div class="form-floating mb-3">
@@ -55,7 +54,7 @@
                         <div class="col-md-3">
                             <div class="card">
                                 <div class="card-header">
-                                    Pagos
+                                    Pagos de monto total: {{ $user->ComisionGanada }}
                                 </div>
                                 <div class="card-body">
                                     Lista de pagos

@@ -34,9 +34,17 @@ class PagoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, User $user)
     {
-        echo 'guardar pago';
+        $request->request->add(['user_id' => $user->id]);
+        $data = $request->all();
+        $request->validate([
+            'fecha_pago' => 'required',
+            'monto' => 'required',
+        ]);
+
+        Pago::create($data);
+        return redirect()->back()->with('status', 'Se registro el pago correctamente');
     }
 
     /**
