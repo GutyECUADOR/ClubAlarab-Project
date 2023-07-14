@@ -35,18 +35,21 @@ Route::post('/sendEmail', function (Request $request) {
     return redirect('/sendEmail')->with('status', 'Solicitud Enviada con éxito!');
 })->name('solicitudSoporte');
 
-Route::get('/dashboard', [InversionController::class, 'index'])->middleware(['auth','role'])->name('dashboard');
 Route::get('/inversions/{inversion}', [InversionController::class, 'edit'])->middleware(['auth'])->name('inversions.edit');
 Route::put('/inversions/{inversion}', [InversionController::class, 'update'])->middleware(['auth'])->name('inversions.update');
 
 
-Route::middleware('auth')->group(function () {
-   
+Route::middleware(['auth','role'])->group(function () {
+    Route::get('/dashboard', [InversionController::class, 'index'])->middleware(['auth','role'])->name('dashboard');
     Route::get('/pagos/{user}', [PagoController::class, 'create'])->name('pagos.create');
     Route::post('/pagos/{user}', [PagoController::class, 'store'])->name('pagos.update');
+    Route::get('/users', [RegisteredUserController::class, 'index'])->name('users-list');
+});
+
+Route::middleware('auth')->group(function () {
+   
     Route::resource('tipos-inversion', TipoInversionController::class);
     Route::resource('dias-inversion', DiasInversionController::class);
-    Route::get('/users', [RegisteredUserController::class, 'index'])->name('users-list');
     Route::post('/uploadfile',[FileController::class, 'store'])->name('uploadFile');;
 });
 

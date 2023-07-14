@@ -54,10 +54,33 @@
                         <div class="col-md-3">
                             <div class="card">
                                 <div class="card-header">
-                                    Pagos de monto total: {{ $user->ComisionGanada }}
+                                    <p>Total comisión ganada: ${{ $user->ComisionGanada }}</p> 
+                                    <p>Total 10% de equipos: ${{ $user->ComisionGanadaMenorEquipo }}</p> 
+                                    <p>Total: <span class="text-success">${{ $user->ComisionGanada + $user->ComisionGanadaMenorEquipo }}</span></p> 
                                 </div>
                                 <div class="card-body">
-                                    Lista de pagos
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-sm table-hover">
+                                          <thead>
+                                            <tr>
+                                              <th scope="col">Fecha</th>
+                                              <th scope="col">Cantidad</th>
+                                              
+                                            </tr>
+                                          </thead>
+                                          <tbody>
+                                            @foreach ($user->PagosRecibidos as $pago)
+                                              <tr>
+                                                <td>{{ $pago->fecha_pago }}</td>
+                                                <td>{{ $pago->monto }}</td>
+                                              </tr>
+                                            @endforeach
+                                          </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    Total Pagado: $ <span class="text-success">{{ $user->PagosRecibidos->sum('monto')}}</span>
                                 </div>
                             </div>
                         </div>

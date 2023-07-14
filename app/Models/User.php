@@ -46,7 +46,6 @@ class User extends Authenticatable
         return $data;
     }
 
-
     public function getCantidadInvesionPagadaAttribute () {
         $data = DB::table('users')
         ->select('usdt')
@@ -114,9 +113,27 @@ class User extends Authenticatable
         return $cantidad_EQ2;
     }
 
+    public function getPagosRecibidosAttribute () {
+        $data = DB::table('users')
+        ->select('*')
+        ->join('pagos', 'pagos.user_id', '=', 'users.id')
+        ->where([
+            'users.id' => $this->id
+        ])
+        ->get();
+       
+        return $data;
+    }
 
+    public function getComisionGanadaMenorEquipoAttribute () {
+        $total_EQ1 = $this->ListaEquipoA->sum('usdt');
+        $total_EQ2 = $this->ListaEquipoB->sum('usdt');
 
-    
+        if ($total_EQ1 > $total_EQ2) {
+            return $total_EQ2 * 0.10;
+        }
+        return $total_EQ1 * 0.10;
+    }
 
     /**
      * The attributes that should be hidden for serialization.

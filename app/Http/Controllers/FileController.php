@@ -12,9 +12,7 @@ class FileController extends Controller
 {
     public function store(Request $request)
     {
-        $data = $request->all();
-
-        $validator = Validator::make($data, [
+        $request->validate([
             'imagen_recibo' => 'required'
         ]);
 

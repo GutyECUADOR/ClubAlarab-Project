@@ -40,7 +40,7 @@ class PagoController extends Controller
         $data = $request->all();
         $request->validate([
             'fecha_pago' => 'required',
-            'monto' => 'required',
+            'monto' => 'required|numeric|min:1',
         ]);
 
         Pago::create($data);

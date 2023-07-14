@@ -11,6 +11,9 @@
            
           </div>
 
+          <!-- Validation Errors -->
+          <x-auth-validation-errors class="mb-4" :errors="$errors" />
+
           <div class="container text-center">
             <div class="row mb-3">
               <div class="col-md-8">
