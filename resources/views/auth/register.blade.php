@@ -58,6 +58,7 @@
 
             <div class="d-grid gap-2">
                 <button class="btn-block btn btn-lg btn-primary" type="submit">Registrar</button>
+                <a href="{{route('login')}}">O si ya tienes una cuenta da clic aqui</a>
             </div>
 
         </form>
