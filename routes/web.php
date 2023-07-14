@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\DiasInversionController;
 use App\Http\Controllers\InversionController;
+use App\Http\Controllers\PagoController;
 use App\Http\Controllers\TipoInversionController;
 use App\Http\Controllers\FileController;
 use App\Mail\SoporteUsuarioMaileable;
@@ -40,6 +41,9 @@ Route::put('/inversions/{inversion}', [InversionController::class, 'update'])->m
 
 
 Route::middleware('auth')->group(function () {
+   
+    Route::get('/pagos/{user}', [PagoController::class, 'create'])->name('pagos.create');
+    Route::post('/pagos/{user}', [PagoController::class, 'store'])->name('pagos.update');
     Route::resource('tipos-inversion', TipoInversionController::class);
     Route::resource('dias-inversion', DiasInversionController::class);
     Route::get('/users', [RegisteredUserController::class, 'index'])->name('users-list');

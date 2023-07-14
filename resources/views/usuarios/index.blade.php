@@ -55,20 +55,23 @@
                     </td>
                     @else
                     <td>
-                      <span ></span> Sin pago</a>
+                      <span ></span> Sin recibo</a>
                     </td>
                     @endif
                     <td>
-                      <a href="{{ route('register.edit', $user)}}" class="btn btn-sm btn-primary">
-                        <span data-feather="edit"></span> Editar
-                    </a>
+                      <form method="GET" action="{{ route('pagos.create', $user) }}">
+                        <button class="btn btn-sm btn-primary">
+                          <span data-feather="edit"></span> Registrar pago
+                        </button>
+                     </form>
                     </td>
                     <td>
-                      <form method="POST" action="{{ route('register.asignar', $user) }}">
-                        @csrf
-                        <button class="btn btn-sm btn-success"> <span data-feather="check-square"></span>Pagar/Asignar </button>
-                      </form>
-                      
+                      @if(!$user->is_payed)
+                        <form method="POST" action="{{ route('register.asignar', $user) }}">
+                          @csrf
+                          <button class="btn btn-sm btn-success"> <span data-feather="check-square"></span>Asignar ubicación </button>
+                        </form>
+                      @endif
                     </td>
                   </tr>
                 @endforeach
