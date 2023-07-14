@@ -46,13 +46,13 @@
 
             <!-- Password -->
             <div class="form-floating mb-3">
-                <input type="text" name="password" class="form-control" id="password" required>
+                <input type="password" name="password" class="form-control" id="password" required>
                 <label for="password">Contraseña</label>
             </div>
 
             <!-- Confirm Password -->
             <div class="form-floating mb-3">
-                <input type="text" name="password_confirmation" class="form-control" id="password_confirmation" required>
+                <input type="password" name="password_confirmation" class="form-control" id="password_confirmation" required>
                 <label for="password_confirmation">Confirme Contraseña</label>
             </div>
 

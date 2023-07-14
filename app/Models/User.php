@@ -83,7 +83,7 @@ class User extends Authenticatable
                         ->join('packages', 'packages.id', '=', 'users.package_id')
                         ->where([
                             'is_payed' => 1,
-                            'nickname' => $this->nickname
+                            'nickname_promoter' => $this->nickname
                         ])
                         ->whereIn('location', $array_rango_EQ1)->get();
         return $cantidad_EQ1;
@@ -109,7 +109,7 @@ class User extends Authenticatable
                         ->join('packages', 'packages.id', '=', 'users.package_id')
                         ->where([
                             'is_payed' => 1,
-                            'nickname' => $this->nickname                            
+                            'nickname_promoter' => $this->nickname                            
                         ])
                         ->whereIn('location', $array_rango_EQ2)->get();
         return $cantidad_EQ2;
