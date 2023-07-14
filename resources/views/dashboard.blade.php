@@ -70,7 +70,8 @@
               <div class="col">
                 <div class="card">
                   <div class="card-header fw-bold">
-                    Equipo 1
+                    Equipo 1 - {{ Auth::user()->ListaEquipoA->count() }} invitados
+                    <p class="mb-0 text-success">Total Invertido: $0</p>
                   </div>
                   <div class="card-body">
                    
@@ -97,7 +98,8 @@
               <div class="col">
                 <div class="card">
                   <div class="card-header fw-bold">
-                    Equipo 2
+                     Equipo 1 - {{ Auth::user()->ListaEquipoB->count() }} invitados
+                     <p class="mb-0 text-success">Total Invertido: $0</p>
                   </div>
                   <div class="card-body">
                    
