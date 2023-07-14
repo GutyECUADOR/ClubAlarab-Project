@@ -5,13 +5,16 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>{{ env('APP_NAME'), 'Mi App' }}</title>
+  <title>{{ env('APP_NAME'), 'Mi App' }} :. Inversiones Seguras</title>
   <meta content="App de inversiones" name="description">
   <meta content="inversiones" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/favicon.ico" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  
+
+  <!-- Custom Fonts -->
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -43,10 +46,10 @@
   <header id="header" class="fixed-top ">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo me-auto"><a href="/">{{ env('APP_NAME'), 'Mi App' }} </a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
-      <a href="/" class="logo me-auto"><img src="assets/img/appicon.png" alt="" class="img-fluid"></a>
-
+      <a href="/" class="logo"><img src="{{ asset('assets/img/coin.png') }}" alt="" class="img-fluid" style="max-height: 70px"></a>
+      <h1 class="logo me-auto titulo-logo"><a href="/">Club Alarab</a></h1>
+      
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link scrollto active" href="#hero">Inicio</a></li>
@@ -66,9 +69,8 @@
       <div class="row">
         <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
           <h1>La mejor solucion para sus inversiones</h1>
-          <h2>Registrate y descarga la app para comenzar a invertir</h2>
+          <h2>Registrate para comenzar a invertir</h2>
           <div class="d-flex justify-content-center justify-content-lg-start">
-            <a href="#promo" class="btn-get-started scrollto">Descarga la App</a>
             <a href="assets/img/PROSPERO_CRECER.mp4" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Video de Introducción</span></a>
           </div>
         </div>
@@ -80,7 +82,7 @@
 
   </section><!-- End Hero -->
 
-  <main id="main">
+ {{--  <main id="main">
 
     <section id="promo" class="promo section offset-header has-pattern position-relative">
         <div class="container" data-aos="fade-up">
@@ -155,12 +157,12 @@
       </div>
     </section><!-- End About Us Section -->
 
-  </main><!-- End #main -->
+  </main> --}}<!-- End #main -->
 
   <!-- ======= Footer ======= -->
   <footer id="footer">
 
-    <div class="footer-newsletter">
+    {{-- <div class="footer-newsletter">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-6">
@@ -172,11 +174,11 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> --}}
 
-    <div class="footer-top">
+    <div class="footer-top" style="background: #37517e;">
       <div class="container">
-        <div class="row">
+        {{-- <div class="row">
 
           <div class="col-lg-3 col-md-6 footer-contact">
             <h3>Arsha</h3>
@@ -223,20 +225,20 @@
             </div>
           </div>
 
-        </div>
+        </div> --}}
       </div>
     </div>
 
     <div class="container footer-bottom clearfix">
       <div class="copyright">
-        &copy; Copyright <strong><span>Arsha</span></strong>. All Rights Reserved
+        &copy; Copyright <strong><span>{{ env('APP_NAME'), 'Mi App' }}</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->
         <!-- You can delete the links only if you purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        Designed by <a href="https://sphera.com/">Sphera Dev</a>
       </div>
     </div>
   </footer><!-- End Footer -->

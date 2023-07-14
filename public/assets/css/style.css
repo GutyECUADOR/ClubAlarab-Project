@@ -8,6 +8,15 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
+@font-face {
+  font-family: 'AwalRamadhan';
+  src:  url(../../fonts/AwalRamadhan.ttf) format('truetype');
+}
+
+.titulo-logo {
+  font-family: 'AwalRamadhan'
+}
+
 body {
   font-family: "Open Sans", sans-serif;
   color: #444444;
@@ -129,13 +138,12 @@ h6 {
 }
 
 #header .logo {
-  font-size: 30px;
+  font-size: 50px;
   margin: 0;
   padding: 0;
   line-height: 1;
   font-weight: 500;
   letter-spacing: 2px;
-  text-transform: uppercase;
 }
 
 #header .logo a {

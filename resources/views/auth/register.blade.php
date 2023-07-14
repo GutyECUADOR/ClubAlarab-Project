@@ -3,7 +3,7 @@
     <main class="form-signin">        
         <form method="POST" action="{{ route('register') }}">
             @csrf
-            <img class="mb-4" src="https://getbootstrap.com/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
+            <img class="mb-0" src="{{ asset('assets/img/logo.png') }}" alt="" width="160" height="200">
             <h3>Registro de nuevo usuario</h3>
 
             <!-- Validation Errors -->
