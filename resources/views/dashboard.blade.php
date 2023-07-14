@@ -69,6 +69,7 @@
               </div>
             </div>
 
+            @if(auth()->user()->CantidadInvitadosPagados->count() >= 2)
             <div class="row">
               <div class="col">
                 <div class="card">
@@ -134,6 +135,14 @@
                 </div>
               </div>
             </div>
+            @else
+            <div class="alert alert-success" role="alert">
+              <h4 class="alert-heading">Sin equipo completo!</h4>
+              <p>Tus equipos se mostrarán cuando tengas almenos 2 invitados activos y además hayas realizado el pago de tu paquete .</p>
+              <hr>
+              <p class="mb-0">Recuerda que las personas que se registren deben indicar tu Nickname y además realizar el pago del paquete.</p>
+            </div>
+            @endif
           </div>
 
           
