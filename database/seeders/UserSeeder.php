@@ -29,7 +29,8 @@ class UserSeeder extends Seeder
             'wallet_usdt_tr20' => '',
             'wallet_alarab' => '',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'is_payed' => 1,
             ],
         ));
 

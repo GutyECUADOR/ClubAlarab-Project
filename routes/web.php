@@ -25,6 +25,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/link', function () {        
+    $target = "/home/qex8lzddwa48/clubalarab/storage/app/public"; // Carpeta privada
+    $shortcut = "/home/qex8lzddwa48/public_html/clubalarab.com/storage"; // Carpeta publica
+   
+    symlink($target, $shortcut);
+ });
+
 Route::get('/sendEmail', function () {
     return view('mail/sendEmail');
 });
