@@ -71,7 +71,7 @@
                 <div class="card">
                   <div class="card-header fw-bold">
                     Equipo 1 - {{ Auth::user()->ListaEquipoA->count() }} invitados
-                    <p class="mb-0 text-success">Total Invertido: $0</p>
+                    <p class="mb-0 text-success">Total Invertido: ${{ Auth::user()->ListaEquipoA->sum('usdt') }}</p>
                   </div>
                   <div class="card-body">
                    
@@ -99,7 +99,7 @@
                 <div class="card">
                   <div class="card-header fw-bold">
                      Equipo 1 - {{ Auth::user()->ListaEquipoB->count() }} invitados
-                     <p class="mb-0 text-success">Total Invertido: $0</p>
+                     <p class="mb-0 text-success">Total Invertido: ${{ Auth::user()->ListaEquipoB->sum('usdt') }}</p>
                   </div>
                   <div class="card-body">
                    
