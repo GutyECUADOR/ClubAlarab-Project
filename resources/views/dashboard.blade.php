@@ -74,23 +74,27 @@
                     <p class="mb-0 text-success">Total Invertido: ${{ Auth::user()->ListaEquipoA->sum('usdt') }}</p>
                   </div>
                   <div class="card-body">
-                   
-                    <table class="table table-striped table-sm table-hover">
-                      <thead>
-                        <tr>
-                          <th scope="col">Nickname</th>
-                          <th scope="col">Inversión</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        @foreach (Auth::user()->ListaEquipoA as $user)
-                        <tr>
-                          <td>{{ $user->nickname }}</td>
-                          <td>$ {{ $user->usdt }}</td>
-                        </tr>
-                        @endforeach
-                      </tbody>
-                    </table>
+                    <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseEQ1" role="button" aria-expanded="false" aria-controls="collapseExample">
+                      Ver detalle
+                    </a>
+                    <div class="collapse" id="collapseEQ1">
+                      <table class="table table-striped table-sm table-hover">
+                        <thead>
+                          <tr>
+                            <th scope="col">Nickname</th>
+                            <th scope="col">Inversión</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          @foreach (Auth::user()->ListaEquipoA as $user)
+                          <tr>
+                            <td>{{ $user->nickname }}</td>
+                            <td>$ {{ $user->usdt }}</td>
+                          </tr>
+                          @endforeach
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -102,23 +106,27 @@
                      <p class="mb-0 text-success">Total Invertido: ${{ Auth::user()->ListaEquipoB->sum('usdt') }}</p>
                   </div>
                   <div class="card-body">
-                   
-                    <table class="table table-striped table-sm table-hover">
-                      <thead>
-                        <tr>
-                          <th scope="col">Nickname</th>
-                          <th scope="col">Inversión</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        @foreach (Auth::user()->ListaEquipoB as $user)
-                        <tr>
-                          <td>{{ $user->nickname }}</td>
-                          <td>$ {{ $user->usdt }}</td>
-                        </tr>
-                        @endforeach
-                      </tbody>
-                    </table>
+                    <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseEQ2" role="button" aria-expanded="false" aria-controls="collapseExample">
+                      Ver detalle
+                    </a>
+                    <div class="collapse" id="collapseEQ2">
+                      <table class="table table-striped table-sm table-hover">
+                        <thead>
+                          <tr>
+                            <th scope="col">Nickname</th>
+                            <th scope="col">Inversión</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          @foreach (Auth::user()->ListaEquipoB as $user)
+                          <tr>
+                            <td>{{ $user->nickname }}</td>
+                            <td>$ {{ $user->usdt }}</td>
+                          </tr>
+                          @endforeach
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
                 </div>
               </div>
