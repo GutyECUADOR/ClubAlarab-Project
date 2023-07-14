@@ -49,7 +49,7 @@ class UserSeeder extends Seeder
         
         
       
-        foreach (range(1,10) as $index) {
+       /*  foreach (range(1,10) as $index) {
             User::create([
                 'nickname' => 'test'.$index,
                 'is_payed' => 0,
@@ -60,7 +60,7 @@ class UserSeeder extends Seeder
                 'password' => Hash::make('12345678'),
                 'imagen_recibo' => null
             ]);
-        }
+        } */
 
        
     

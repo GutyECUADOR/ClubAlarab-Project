@@ -104,10 +104,6 @@ class RegisteredUserController extends Controller
 
     public function asignar(Request $request, User $user) {
 
-        if (!$user->is_payed) {
-            return redirect()->back()->withErrors(['El usuario: '.$user->nickname.' no tiene registrado su pago, no se puede asignar ubicación.']);
-        }
-
         if ($user->location) {
             return redirect()->back()->withErrors(['El usuario: '.$user->nickname.' ya tiene registrado una ubicacion, no se puede asignar una nueva ubicación.']);
         }
@@ -199,12 +195,14 @@ class RegisteredUserController extends Controller
         // Trabajamos en el equipo con menor numero de ubicaciones asignadas
         if ($cantidad_EQ1 < $cantidad_EQ2) {
             $user_DB = User::findOrFail($user->id);
+            $user_DB->is_payed = 1;
             $user_DB->location = $ubicacion_libre_EQ1;
             $user_DB->save();
             return redirect()->back()->with('status', 'Registrado en ubicación.'. $ubicacion_libre_EQ1);
            
         }else{
             $user_DB = User::findOrFail($user->id);
+            $user_DB->is_payed = 1;
             $user_DB->location = $ubicacion_libre_EQ2;
             $user_DB->save();
             return redirect()->back()->with('status', 'Registrado en ubicación.'. $ubicacion_libre_EQ2);

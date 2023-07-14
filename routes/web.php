@@ -40,14 +40,14 @@ Route::put('/inversions/{inversion}', [InversionController::class, 'update'])->m
 
 
 Route::middleware(['auth','role'])->group(function () {
-    Route::get('/dashboard', [InversionController::class, 'index'])->middleware(['auth','role'])->name('dashboard');
     Route::get('/pagos/{user}', [PagoController::class, 'create'])->name('pagos.create');
     Route::post('/pagos/{user}', [PagoController::class, 'store'])->name('pagos.update');
     Route::get('/users', [RegisteredUserController::class, 'index'])->name('users-list');
 });
 
 Route::middleware('auth')->group(function () {
-   
+
+    Route::get('/dashboard', [InversionController::class, 'index'])->name('dashboard');
     Route::resource('tipos-inversion', TipoInversionController::class);
     Route::resource('dias-inversion', DiasInversionController::class);
     Route::post('/uploadfile',[FileController::class, 'store'])->name('uploadFile');;

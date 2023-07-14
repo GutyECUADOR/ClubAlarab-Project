@@ -82,7 +82,8 @@ class User extends Authenticatable
         $cantidad_EQ1 = DB::table('users')->select('*')
                         ->join('packages', 'packages.id', '=', 'users.package_id')
                         ->where([
-                            'is_payed' => 1
+                            'is_payed' => 1,
+                            'nickname' => $this->nickname
                         ])
                         ->whereIn('location', $array_rango_EQ1)->get();
         return $cantidad_EQ1;
@@ -107,7 +108,8 @@ class User extends Authenticatable
         $cantidad_EQ2 = DB::table('users')->select('*')
                         ->join('packages', 'packages.id', '=', 'users.package_id')
                         ->where([
-                            'is_payed' => 1
+                            'is_payed' => 1,
+                            'nickname' => $this->nickname                            
                         ])
                         ->whereIn('location', $array_rango_EQ2)->get();
         return $cantidad_EQ2;
