@@ -103,6 +103,14 @@ class RegisteredUserController extends Controller
 
 
     public function asignar(Request $request, User $user) {
+
+        if (!$user->is_payed) {
+            return redirect()->back()->withErrors(['El usuario: '.$user->nickname.' no tiene registrado su pago, no se puede asignar ubicación.']);
+        }
+
+        if ($user->location) {
+            return redirect()->back()->withErrors(['El usuario: '.$user->nickname.' ya tiene registrado una ubicacion, no se puede asignar una nueva ubicación.']);
+        }
      
         /* Obtnemos la ubicacion (id) del arbol de su patrocinador */
         $resulset = DB::select('

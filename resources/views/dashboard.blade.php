@@ -20,7 +20,7 @@
                   </div>
                   <div class="card-body">
                     <h5 class="card-title">NickName: {{ Str::title(Auth::user()->nickname) }}</h5>
-                    <p class="card-text">Esta Activo: {{ Auth::user()->EstadoPago }}</p>
+                    <p class="card-text">Estado: {{ Auth::user()->EstadoPago }}</p>
                     <p class="card-text">Cantidad Invitados: {{ Auth::user()->CantidadInvitadosPagados->count() }}</p>
                     <p class="card-text">Inversión total de Invitados: $ {{ Auth::user()->CantidadInvesionPagada }}</p>
                     <p class="card-text">Comisión 20% ganada: $ {{ Auth::user()->ComisionGanada }}</p>
