@@ -106,6 +106,24 @@
 
             @if(auth()->user()->CantidadInvitadosPagados->count() >= 2)
             <div class="row">
+              <div class="col-md-3">
+               <div class="card">
+                  <div class="card-header fw-bold">
+                    Pagos
+                  </div>
+                  <div class="card-body">
+                    <img src="{{ asset('assets/img/pago.png') }}" alt="" class="img-fluid rounded-circle" style="max-height: 100px">
+                   
+                    <p class="card-text mb-0">Paga tu paquete con tu USTD atravez de tu la red TR20</p>
+                   
+                    <span class="text-center fw-bold">Wallet</span>
+                    <div class="input-group input-group-sm">
+                      <input type="text" class="form-control"  value="TQu8XqRU8H7EfT1q31yLzG5nRAcgc4fwkc" style="font-size: 12px;">
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
               <div class="col">
                 <div class="card">
                   <div class="card-header fw-bold">
@@ -171,6 +189,7 @@
               </div>
             </div>
             @else
+
             <div class="alert alert-success" role="alert">
               <h4 class="alert-heading">Sin equipo completo!</h4>
               <p>Tus equipos se mostrarán cuando tengas almenos 2 invitados activos y además hayas realizado el pago de tu paquete .</p>
