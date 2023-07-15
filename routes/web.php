@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\DiasInversionController;
 use App\Http\Controllers\InversionController;
 use App\Http\Controllers\PagoController;
+use App\Http\Controllers\WalletController;
 use App\Http\Controllers\TipoInversionController;
 use App\Http\Controllers\FileController;
 use App\Mail\SoporteUsuarioMaileable;
@@ -57,7 +58,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [InversionController::class, 'index'])->name('dashboard');
     Route::resource('tipos-inversion', TipoInversionController::class);
     Route::resource('dias-inversion', DiasInversionController::class);
-    Route::post('/uploadfile',[FileController::class, 'store'])->name('uploadFile');;
+    Route::post('/uploadfile',[FileController::class, 'store'])->name('uploadFile');
+    Route::post('/uploadWalletUSDT',[WalletController::class, 'update_wallet_USDT'])->name('uploadWalletUSDT');
+    Route::post('/uploadWalletALARAB',[WalletController::class, 'update_wallet_ALARAB'])->name('uploadWalletALARAB');
 });
 
 require __DIR__.'/auth.php';

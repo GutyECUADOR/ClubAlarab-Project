@@ -16,24 +16,25 @@
 
           <div class="container text-center">
             <div class="row mb-3">
-              <div class="col-md-8">
+              <div class="col-md-3">
                 <div class="card">
                   <div class="card-header fw-bold">
                     Datos de la cuenta 
                   </div>
                   <div class="card-body">
-                    <h5 class="card-title">NickName: {{ Str::title(Auth::user()->nickname) }}</h5>
-                    <p class="card-text">Estado: {{ Auth::user()->EstadoPago }}</p>
-                    <p class="card-text">Cantidad Invitados: {{ Auth::user()->CantidadInvitadosPagados->count() }}</p>
-                    <p class="card-text">Inversión total de Invitados: $ {{ Auth::user()->CantidadInvesionPagada }}</p>
-                    <p class="card-text">Comisión 20% ganada: $ {{ Auth::user()->ComisionGanada }}</p>
+                    <img src="{{ asset('assets/img/no-user-image.gif') }}" alt="" class="img-fluid rounded-circle" style="max-height: 100px">
+                    <h5 class="card-title">Nickname: {{ Str::title(Auth::user()->nickname) }}</h5>
+                    <p class="card-text mb-0">Estado: {{ Auth::user()->EstadoPago }}</p>
+                    <p class="card-text mb-0">Cantidad Invitados: {{ Auth::user()->CantidadInvitadosPagados->count() }}</p>
+                    <p class="card-text mb-0">Inversión total de Invitados: $ {{ Auth::user()->CantidadInvesionPagada }}</p>
+                    <p class="card-text mb-0">Comisión 20% ganada: $ {{ Auth::user()->ComisionGanada }}</p>
                     
                   </div>
                 </div>
               </div>
 
               <div class="col-md-4">
-                <div class="card">
+                <div class="card mb-2">
                   <div class="card-header fw-bold">
                     Comisión Ganada
                   </div>
@@ -66,6 +67,40 @@
                     </div>
                    @endif
                 </div>
+              </div>
+
+              <div class="col-md-5">
+                <div class="card mb-2">
+                  <div class="card-header fw-bold">
+                    Wallet USDT
+                  </div>
+                  <div class="card-body">
+                      <form method="POST" action="{{ route('uploadWalletUSDT') }}">
+                          @csrf
+                        <div class="input-group mb-3">
+                          <input type="text" name="wallet_usdt" value="{{ Auth::user()->wallet_usdt_tr20 }}" class="form-control" placeholder="Sin wallet - indica aqui tu wallet USDT">
+                          <button class="btn btn-sm btn-primary">Actualizar</button>
+                        </div>
+                      </form>
+                  </div>
+                </div>
+
+                <div class="card mb-2">
+                  <div class="card-header fw-bold">
+                    Wallet ALARAB
+                  </div>
+                <div class="card-body">
+                  <form method="POST" action="{{ route('uploadWalletALARAB') }}">
+                    @csrf
+                    <div class="input-group mb-3">
+                      <input type="text" name="wallet_alarab" value="{{ Auth::user()->wallet_alarab }}" class="form-control" placeholder="Sin wallet - indica aqui tu wallet ALARAB">
+                      <button class="btn btn-sm btn-primary">Actualizar</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+
+               
               </div>
             </div>
 
