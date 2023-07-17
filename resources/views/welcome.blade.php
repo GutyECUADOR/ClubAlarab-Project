@@ -67,15 +67,20 @@
 
     <div class="container">
       <div class="row">
-        <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
-          <h1>La mejor solucion para sus inversiones</h1>
-          <h2>Registrate para comenzar a invertir</h2>
-          <div class="d-flex justify-content-center justify-content-lg-start">
+        <div class="col-lg-5 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
+          <h1>El Mundo de las finanzas sin bancos 
+            AlArab es DeFi , Aceptado en más de 195 Países</h1>
+          
+         {{--  <div class="d-flex justify-content-center justify-content-lg-start">
             <a href="assets/img/PROSPERO_CRECER.mp4" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Video de Introducción</span></a>
-          </div>
+          </div> --}}
         </div>
-        <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
-          <img src="assets/img/hero-img.png" class="img-fluid animated" alt="">
+        <div class="col-lg-7 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="100">
+          <div class="embed-responsive embed-responsive-16by9">
+            <iframe class="embed-responsive-item" style="border: 6px solid #CCCCCC; border-radius: 25px; width: 100%; height: 400px" class="embed-responsive-item" src="https://www.youtube.com/embed/5L6tvrXrUWM?autoplay=1&mute=1&loop=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+          
+          {{-- <img src="assets/img/hero-img.png" class="img-fluid animated" alt=""> --}}
         </div>
       </div>
     </div>
@@ -257,6 +262,7 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  
 
 </body>
 

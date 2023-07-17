@@ -118,7 +118,7 @@
                    
                     <span class="text-center fw-bold">Wallet</span>
                     <div class="input-group input-group-sm">
-                      <input type="text" class="form-control"  value="TQu8XqRU8H7EfT1q31yLzG5nRAcgc4fwkc" style="font-size: 12px;">
+                      <input type="text" class="form-control"  value="TQu8XqRU8H7EfT1q31yLzG5nRAcgc4fwkc" style="font-size: 12px;" readonly>
                     </div>
                     
                   </div>
