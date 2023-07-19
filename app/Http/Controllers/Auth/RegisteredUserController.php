@@ -26,10 +26,11 @@ class RegisteredUserController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function create()
+    public function create($promotor = '')
     {
         $packages = Packages::all();
-        return view('auth.register', compact('packages'));
+       
+        return view('auth.register', compact('packages','promotor'));
     }
 
     /**

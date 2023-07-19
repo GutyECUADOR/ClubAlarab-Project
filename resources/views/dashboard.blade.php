@@ -22,12 +22,14 @@
                     Datos de la cuenta 
                   </div>
                   <div class="card-body">
-                    <img src="{{ asset('assets/img/no-user-image.gif') }}" alt="" class="img-fluid rounded-circle" style="max-height: 100px">
-                    <h5 class="card-title">Nickname: {{ Str::title(Auth::user()->nickname) }}</h5>
+                    <img src="{{ asset('assets/img/no-user-image.gif') }}" alt="" class="img-fluid rounded-circle" style="max-height: 70px">
+                    <h5 id="nickname" class="card-title">{{ Str::title(Auth::user()->nickname) }}</h5>
                     <p class="card-text mb-0">Estado: {{ Auth::user()->EstadoPago }}</p>
                     <p class="card-text mb-0">Cantidad Invitados: {{ Auth::user()->CantidadInvitadosPagados->count() }}</p>
                     <p class="card-text mb-0">Inversión total de Invitados: $ {{ Auth::user()->CantidadInvesionPagada }}</p>
                     <p class="card-text mb-0">Comisión 20% ganada: $ {{ Auth::user()->ComisionGanada }}</p>
+                    
+                    <button type="button" id="copybutton" onclick="copyText()" class="btn btn-sm btn-success" title="Copiar"><span data-feather="copy"></span>Copiar mi enlace de invitación</button>
                     
                   </div>
                 </div>
@@ -114,7 +116,7 @@
                   <div class="card-body">
                     <img src="{{ asset('assets/img/pago.png') }}" alt="" class="img-fluid rounded-circle" style="max-height: 100px">
                    
-                    <p class="card-text mb-0">Paga tu paquete con tu USTD atravez de tu la red TR20</p>
+                    <p class="card-text mb-0">Paga tu paquete con tu USTD atravez de la red TR20</p>
                    
                     <span class="text-center fw-bold">Wallet</span>
                     <div class="input-group input-group-sm">
@@ -189,13 +191,36 @@
               </div>
             </div>
             @else
-
-            <div class="alert alert-success" role="alert">
-              <h4 class="alert-heading">Sin equipo completo!</h4>
-              <p>Tus equipos se mostrarán cuando tengas almenos 2 invitados activos y además hayas realizado el pago de tu paquete .</p>
-              <hr>
-              <p class="mb-0">Recuerda que las personas que se registren deben indicar tu Nickname y además realizar el pago del paquete.</p>
+            <div class="row">
+              <div class="col-md-3">
+               <div class="card">
+                  <div class="card-header fw-bold">
+                    Pagos
+                  </div>
+                  <div class="card-body">
+                    <img src="{{ asset('assets/img/pago.png') }}" alt="" class="img-fluid rounded-circle" style="max-height: 100px">
+                   
+                    <p class="card-text mb-0">Paga tu paquete con tu USTD atravez de la red TR20</p>
+                   
+                    <span class="text-center fw-bold">Wallet</span>
+                    <div class="input-group input-group-sm">
+                      <input type="text" class="form-control"  value="TQu8XqRU8H7EfT1q31yLzG5nRAcgc4fwkc" style="font-size: 12px;" readonly>
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="alert alert-success" role="alert">
+                  <h4 class="alert-heading">Sin equipo completo!</h4>
+                  <p>Tus equipos se mostrarán cuando tengas almenos 2 invitados activos y además hayas realizado el pago de tu paquete .</p>
+                  <hr>
+                  <p class="mb-0">Recuerda que las personas que se registren deben indicar tu Nickname y además realizar el pago del paquete.</p>
+                </div>
+              </div>
             </div>
+
+
             @endif
           </div>
 

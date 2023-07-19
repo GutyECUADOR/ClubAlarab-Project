@@ -41,7 +41,7 @@
 
                     <!-- NickName -->
                     <div class="form-floating mb-3">
-                        <input type="nickname_promoter" name="nickname_promoter" value="{{old('nickname_promoter')}}" class="form-control" id="nickname_promoter" required>
+                        <input type="nickname_promoter" name="nickname_promoter" value="{{ $promotor }}" class="form-control" id="nickname_promoter" required>
                         <label for="nickname_promoter">Nickname del Promotor (Prometer)</label>
                     </div>
 
