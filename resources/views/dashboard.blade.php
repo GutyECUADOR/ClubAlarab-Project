@@ -116,7 +116,7 @@
                   <div class="card-body">
                     <img src="{{ asset('assets/img/pago.png') }}" alt="" class="img-fluid rounded-circle" style="max-height: 100px">
                    
-                    <p class="card-text mb-0">Paga tu paquete con tu USTD atravez de la red TR20</p>
+                    <p class="card-text mb-0">Paga tu paquete con tu USTD atravez de la red TRC20</p>
                    
                     <span class="text-center fw-bold">Wallet</span>
                     <div class="input-group input-group-sm">
@@ -161,7 +161,7 @@
               <div class="col">
                 <div class="card">
                   <div class="card-header fw-bold">
-                     Equipo 1 - {{ Auth::user()->ListaEquipoB->count() }} invitados
+                     Equipo 2 - {{ Auth::user()->ListaEquipoB->count() }} invitados
                      <p class="mb-0 text-success">Total Invertido: ${{ Auth::user()->ListaEquipoB->sum('usdt') }}</p>
                   </div>
                   <div class="card-body">
@@ -200,7 +200,7 @@
                   <div class="card-body">
                     <img src="{{ asset('assets/img/pago.png') }}" alt="" class="img-fluid rounded-circle" style="max-height: 100px">
                    
-                    <p class="card-text mb-0">Paga tu paquete con tu USTD atravez de la red TR20</p>
+                    <p class="card-text mb-0">Paga tu paquete con tu USTD atravez de la red TRC20</p>
                    
                     <span class="text-center fw-bold">Wallet</span>
                     <div class="input-group input-group-sm">
